@@ -1,3 +1,4 @@
+const cors = require('cors')
 const express = require('express')
 const app = express()
 
@@ -5,6 +6,8 @@ const Sandbox = require('sandbox')
 const sandbox = new Sandbox()
 
 const PORT = process.env.PORT || 3000
+
+app.use(cors())
 
 app.get('/saida/:entrada', (req, res) => {
   sandbox.run(req.params.entrada, saida => {
